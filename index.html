@@ -3,13 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="main.css">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Sorting Hat</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head> 
+
+
 </head>
 <body>
- 
+  <div id="welcome" class="sortingHat">
+    <div class="card">
+      <img id="sorting" src="https://hellogiggles.com/wp-content/uploads/sites/7/2016/08/11/picture-of-harry-potter-sorting-hat-photo.jpg?quality=82&strip=all">
+      <div class="card-header">
+        Welcome to Hogwarts!!
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Sorting Hat</h5>
+        <button class="btn btn-primary begin-button" id="begin-btn">Begin your journey!</button>
+      </div>
+    </div>
+  </div>
+  <form id="myForm" class="form" hidden>
+    <div class="mb-3">
+      <label class="form-label">Student</label>
+      <input type="text" name="name" class="form-control" id="name" placeholder="Harry Potter"required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Student Picture</label>
+      <input type="text" class="form-control" id="image" placeholder="Image URL" required>
+    </div>
+    <button type="submit" class="btn sort-btn" id="submit-button">Sort!</button>
+  </form>
+  <div id="filters" hidden>
+    <button id="all-btn">All</button>
+    <button id="gryf-btn">Gryffindor</button>
+    <button id="rav-btn">Ravenclaw</button>
+    <button id="huff-btn">Hufflepuff</button>
+    <button id="sly-btn">Slytherin</button>
+    </div>
+  <div id="app"></div>
   
-
+  <div id="bad-students">
+      <h5>Voldy's Army</h5>
+  </div>
+</div>
   <script src="main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
