@@ -1,8 +1,29 @@
 body {
-  background-color: aqua;
+  background-color: whitesmoke;
 }
 #sorting {
   max-width: 50%;
   max-height: 500%;
 
+}
+
+.introcard {
+  background-color: darkgoldenrod;
+}
+
+.hat-img {
+  margin: auto;
+  display: block;
+}
+
+.introp {
+  font-size: 30px;
+}
+
+.begin-button {
+  background-color: black;
+}
+
+.card-title {
+  font-size: 25px;
 }
