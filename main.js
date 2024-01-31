@@ -23,7 +23,7 @@ const students = [
     id: 4,
     name: "Draco Malfoy",
     house: "Slytherin",
-    imageUrl: "https://static.wikia.nocookie.net/warner-bros-entertainment/images/1/11/Draco-malfoy-Harry-Potter-The-Deathly-Hallows-Part-II.jpg/revision/latest?cb=20161230145308"
+    imageUrl: "https://qph.cf2.quoracdn.net/main-qimg-c547b90089ebbfa58187931637360c73-lq"
   },
   {
     id: 5,
@@ -41,7 +41,7 @@ const students = [
     id: 7,
     name: "Cedric Diggory",
     house: "Hufflepuff",
-    imageUrl: "https://static.wikia.nocookie.net/p__/images/c/ca/Cedric_Diffory_%22such_a_handsome_boy%22.jpeg/revision/latest?cb=20160306120749&path-prefix=protagonist"
+    imageUrl: "https://image.janitorai.me/bot-avatars/c25ac5b3-ac4b-46a6-a071-dd44d6783b5e_3fcdd0bc-0e07-4a86-b0b3-5b3443465cff.jpg"
   },
   {
     id: 8,
@@ -57,9 +57,10 @@ const students = [
   selectedDiv.innerHTML = htmlToRender;
 };
 // This a for loop to pass all the information from the array of students to the cards on the DOM
-   const cardsOnDom = (array) => {
-   const studentsDomString = students.map(student => {
-    return `<div class="card" style="width: 18rem;">
+   const cardsOnDom = (students) => {
+   let studentsDomString = "";
+   students.map(student => {
+    studentsDomString += `<div class="card" style="width: 18rem;">
     <img src="${student.imageUrl}" class="card-img-top" alt="${student.name}">
     <div class="card-body">
        <h5 class="card-title">Name: ${student.name}</h5>
@@ -71,58 +72,46 @@ const students = [
     renderToDom("#app", studentsDomString);
   };
 
-  cardsOnDom(students);
-
-    
-
-
-  const showAllButton = document.querySelector("#all-btn");
-  const showGryfButton = document.querySelector("#gryf-btn");
-  const showRavButton = document.querySelector("#rav-btn");
-  const showHuffButton = document.querySelector("#huff-btn");
-  const showSlyButton = document.querySelector("#sly-btn");
+   //created a filter that creates a new array of the specific house we want to filter.
+  const filter = (studentHouse) => {
+    const typeArray = [];
   
-  // Each button has an event when clicked, to filter the specific house to render to the DOM
-  showGryfButton.addEventListener("click", (e) => {
-    if (e.target.id.includes("gryf-btn")) {
-      const filterGryffindor = students.filter((student) => student.house === "Gryffindor")
-      cardsOnDom(filterGryffindor)
-      
-    }
-  });
-
-  showRavButton.addEventListener("click", (e) => {
-    if (e.target.id.includes("rav-btn")) {
-      const filterRavenClaw = students.filter((student) => student.house === "Ravenclaw")
-      cardsOnDom(filterRavenClaw)
-    }
-  });
-  
-  showHuffButton.addEventListener("click", (e) => {
-    if (e.target.id.includes("huff-btn")) {
-      const filterHufflePuff = students.filter((student) => student.house === "Hufflepuff")
-      cardsOnDom(filterHufflePuff)
-    }
-  });
-
-  showSlyButton.addEventListener("click", (e) => {
-    if (e.target.id.includes("sly-btn")) {
-      const filterSlytherin = students.filter((student) => student.house === "Slytherin")
-      cardsOnDom(filterSlytherin)
-    }
-  });
-
-  showAllButton.addEventListener("click", () => {
-    cardsOnDom(students);
-  });
+    students.map(student => {
+      if(student.house === studentHouse) {
+        typeArray.push(student);
+      }
+        cardsOnDom(typeArray);
+    });
+  };
 
 
+ // Made variables for each button and assigned them id's from the html"
+ const showAllButton = document.querySelector("#all-btn");
+ const showGryfButton = document.querySelector("#gryf-btn");
+ const showRavButton = document.querySelector("#rav-btn");
+ const showHuffButton = document.querySelector("#huff-btn");
+ const showSlyButton = document.querySelector("#sly-btn");
 
+ // Each button has an event when clicked, to filter the specific house to render to the DOM
+ showGryfButton.addEventListener("click", () => {
+   filter("Gryffindor")
+ });
 
+ showRavButton.addEventListener("click", () => {
+   filter("Ravenclaw")
+ });
+ 
+ showHuffButton.addEventListener("click", () => {
+   filter("Hufflepuff")
+ });
 
+ showSlyButton.addEventListener("click", () => {
+   filter("Slytherin")
+ });
 
-
-
+ showAllButton.addEventListener("click", () => {
+   cardsOnDom(students);
+ });
 
 
   document.getElementById("begin-btn").addEventListener("click", () => {
@@ -131,13 +120,15 @@ const students = [
   },
     false,
   );
-document.getElementById("submit-button").addEventListener("click", () => {
+
+  document.getElementById("submit-button").addEventListener("click", () => {
   document.getElementById("myForm").hidden = true;
   document.getElementById("filters").hidden = false;
+  document.getElementById("app").hidden = false;
 },
     false,
 );
-
+ 
 
   // Selecting the form element from the html
 const form = document.querySelector("form");
@@ -166,32 +157,16 @@ form.addEventListener("submit", createNewStudent);
 const app = document.querySelector("#app");
 app.addEventListener("click", (e) => {
   if (e.target.id.includes("delete")) {
+    document.getElementById("bad-students").hidden = false;
     const [, id] = e.target.id.split("--");
     const index = students.findIndex((s) => s.id === Number(id));
-    const student = students.find((e) => e.id === Number(id));
-    students.splice(index, 1);
-    console.log(students);
-    cardsOnDom(students)
-
-    if (filterToggle) {
-      cardsOnDom(students)
-    } else {
-      filter(student.type)
-    }
-  }
-});
-
-const delButtons = document.querySelectorAll(".dlt-btn");
-delButtons.forEach((button) => {
-  button.addEventListener("click", (e) => {
-    const studentId = parseInt(e.target.id.split("--")[1]);
-    const index = students.findIndex((student) => student.id === studentId);
-    const expelledStudent = students.splice(index, 1)[0];
-    expelledStudents.push(expelledStudent);
-    renderExpelledCardsOnDom(expelledStudents);
+    // const student = students.find((e) => e.id === Number(id));
+    expelledStudents.push(...students.splice(index, 1))
     cardsOnDom(students);
-  });
-});
+    renderExpelledCardsOnDom(expelledStudents)
+  }
+    false;
+})
 
 const expelledStudents = [];
 
@@ -207,10 +182,28 @@ expelledStudents.push( {
   imageUrl:"https://i.pinimg.com/736x/ad/b5/2f/adb52f27ded173bae8b7bf7cd2e7476d.jpg"
 });
 
+const renderExpelledCardsOnDom = (expelledStudents) => {
+  let domString = "";
+  expelledStudents.map(expelledStudent => {
+    domString += 
+    `<div class="card" style="width: 18rem;">
+      <img src="${expelledStudent.imageUrl}" class="card-img-top" alt="${expelledStudent.name}">
+      <div class="card-body">
+         <h5 class="card-title">Name: ${expelledStudent.name}</h5>
+         <p class="card-text">I have been expelled</p>
+  </div>
+</div>`;
+  })
+  renderToDom("#bad-students", domString)
+};
+
+renderExpelledCardsOnDom(expelledStudents);
+
+
 
 // This function puts the cards on the DOM as soon as the website loads. 
 const startApp = () => {
   cardsOnDom(students);
-}
+};
 
-startApp();
+startApp()
