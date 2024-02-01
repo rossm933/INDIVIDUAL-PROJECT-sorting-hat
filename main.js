@@ -62,17 +62,34 @@ const students = [
    students.map(student => {
     studentsDomString += 
     `<div class="card firstCard" style="width: 18rem;">
-    <img src="${student.imageUrl}" class="card-img-top" alt="${student.name}">
+      <div class="color-header" style="background-color: ${
+        student.house === "Gryffindor"
+        ? "darkred"
+        :student.house === "Slytherin"
+        ? "green"
+        :student.house === "Hufflepuff"
+        ? "orange"
+        :student.house === "Ravenclaw"
+        ?"darkblue"
+        : " " 
+      }">
+        </div>
     <div class="card-body">
+        <img src="${student.imageUrl}" class="card-img-top" alt="${student.name}"></img>
        <h5 class="card-title">Name: ${student.name}</h5>
        <p class="card-text">House: ${student.house}</p>
        <button class="dlt-btn" id="delete--${student.id}">Expel</button>
-</div>
+  </div>
 </div>`
    })
     renderToDom("#app", studentsDomString);
   };
 
+  students.sort(function(a,b) {
+    let studentA = a.name.toUpperCase();
+    let studentB = b.name.toUpperCase();
+    return (studentA < studentB) ? -1 : (studentA > studentB) ? 1 : 0;
+  })
    //created a filter that creates a new array of the specific house we want to filter.
   const filter = (studentHouse) => {
     const typeArray = [];
@@ -137,7 +154,7 @@ const form = document.querySelector("form");
 // This is a create new student function and randomly assigning a student a house. Then render cards on the DOM at the end so that the new student is added to the array we already have.
 const createNewStudent = (e) => {
   e.preventDefault();
-const houses = ['Gryffindor', 'Ravenclaw', 'Huffelpuff', 'Slytherin']
+const houses = ['Gryffindor', 'Ravenclaw', 'Hufflepuff', 'Slytherin']
 const houseIndex = Math.floor(Math.random() * 4)
   const newStudentObj = {
     id: students.length + 1,
@@ -183,6 +200,7 @@ expelledStudents.push( {
   imageUrl:"https://i.pinimg.com/736x/ad/b5/2f/adb52f27ded173bae8b7bf7cd2e7476d.jpg"
 });
 
+
 const renderExpelledCardsOnDom = (expelledStudents) => {
   let domString = "<legend>Voldy's Army:</legend>";
   expelledStudents.map(expelledStudent => {
@@ -200,7 +218,6 @@ const renderExpelledCardsOnDom = (expelledStudents) => {
 };
 
 renderExpelledCardsOnDom(expelledStudents);
-
 
 
 // This function puts the cards on the DOM as soon as the website loads. 
