@@ -58,9 +58,10 @@ const students = [
 };
 // This a for loop to pass all the information from the array of students to the cards on the DOM
    const cardsOnDom = (students) => {
-   let studentsDomString = "";
+   let studentsDomString = "<legend>First Year Students:</legend>";
    students.map(student => {
-    studentsDomString += `<div class="card" style="width: 18rem;">
+    studentsDomString += 
+    `<div class="card firstCard" style="width: 18rem;">
     <img src="${student.imageUrl}" class="card-img-top" alt="${student.name}">
     <div class="card-body">
        <h5 class="card-title">Name: ${student.name}</h5>
@@ -122,7 +123,7 @@ const students = [
   );
 
   document.getElementById("submit-button").addEventListener("click", () => {
-  document.getElementById("myForm").hidden = true;
+  //document.getElementById("myForm").hidden = true;
   document.getElementById("filters").hidden = false;
   document.getElementById("app").hidden = false;
 },
@@ -183,10 +184,11 @@ expelledStudents.push( {
 });
 
 const renderExpelledCardsOnDom = (expelledStudents) => {
-  let domString = "";
+  let domString = "<legend>Voldy's Army:</legend>";
   expelledStudents.map(expelledStudent => {
-    domString += 
-    `<div class="card" style="width: 18rem;">
+    domString +=
+    `
+    <div class="expelledCard" style="width: 18rem;">
       <img src="${expelledStudent.imageUrl}" class="card-img-top" alt="${expelledStudent.name}">
       <div class="card-body">
          <h5 class="card-title">Name: ${expelledStudent.name}</h5>

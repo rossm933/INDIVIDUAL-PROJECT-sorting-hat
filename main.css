@@ -1,5 +1,5 @@
 body {
-  background-color: whitesmoke;
+  background-color: gray;
 }
 #sorting {
   max-width: 50%;
@@ -21,9 +21,118 @@ body {
 }
 
 .begin-button {
-  background-color: black;
+  background-color: rgb(34, 31, 31)
 }
+
+
 
 .card-title {
   font-size: 25px;
 }
+
+#studentsContainer {
+  display: flex;
+  
+}
+
+#app {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  width: 50%;
+  text-align: center;
+  gap: 7px;
+}
+ #bad-students {
+  display: flex;
+  justify-content: center;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  width: 50%;
+  text-align:center;
+  gap: 7px;
+}
+ 
+
+#studentContainer {
+  text-align: center;
+  border: solid, 20px, black
+}
+
+.expelledCard {
+  border: solid 5px black;
+  background-color:  lightcoral;
+  font-weight: bold;
+}
+
+.firstCard{
+  border: solid 5px black;
+  background-color: #ffffc9;
+  color: black;
+  font-weight: bold;
+}
+
+.form {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+#submit-button {
+  background-color: goldenrod;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+
+}
+
+#filters {
+display: flex;
+justify-content: center;
+}
+
+#all-btn {
+width: 18%;
+}
+
+#gryf-btn {
+background-color: red;
+color: black;
+font-weight: bold;
+width: 18%;
+}
+
+#rav-btn {
+background-color: blue;
+color: darkgray;
+font-weight: bold;
+width: 18%;
+
+}
+
+#huff-btn {
+background-color: orange;
+color: black;
+font-weight: bold;
+width: 18%;
+}
+
+ #sly-btn {
+  background-color: green;
+  color: darkgray; 
+  font-weight: bold;
+  width: 18%;
+
+ }
+
+ .dlt-btn {
+  background-color: #62614f;
+  color: black;
+  font-weight: bold;
+ }
+
+ legend {
+  font-size: 30px;
+  color: black;
+  font-weight: bold;
+ }
