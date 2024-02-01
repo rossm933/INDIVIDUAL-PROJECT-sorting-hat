@@ -26,16 +26,16 @@
     </div>
   </div>
   <form id="myForm" class="form" hidden>
-    <div class="mb-3 form-header">
-      Enter First Year's Name
+    <div class="mb-3 form-header" style="text-align: center";>
+      <h2>Enter First Year's Name</h2>
     </div>
-      <div>
+      <div class="form">
       <label class="form-label">Student</label>
-      <input type="text" name="name" class="form-control" id="name" placeholder="Harry Potter"required>
+      <input type="text" name="name" class="form-control" id="name" placeholder="Harry Potter" style="background-color: goldenrod"; required>
     </div>
-    <div class="mb-3">
+    <div class="mb-3 form">
       <label class="form-label">Student Picture</label>
-      <input type="text" class="form-control" id="image" placeholder="Image URL" required>
+      <input type="text" id="image" class="form-control"  placeholder="Image URL"  style="background-color: goldenrod"required>
     </div>
     <button type="submit" class="btn sort-btn" id="submit-button">Sort!</button>
   </form>
@@ -46,10 +46,10 @@
     <button id="huff-btn">Hufflepuff</button>
     <button id="sly-btn">Slytherin</button>
     </div>
-  <div id="app" hidden></div>
-  
-  <div id="bad-students" title="Voldy's Army" style="position:absolute;top:0;right:0;" hidden>
-  </div>
+    <div id="studentsContainer">
+      <div id="app"  hidden></div>
+      <div id="bad-students" hidden></div>
+    </div>
 </div>
   <script src="main.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
