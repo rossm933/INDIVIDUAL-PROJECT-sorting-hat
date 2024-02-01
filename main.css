@@ -1,5 +1,6 @@
 body {
   background-color: gray;
+  font-family: 'Gaegu', sans-serif;
 }
 #sorting {
   max-width: 50%;
@@ -43,6 +44,7 @@ body {
   width: 50%;
   text-align: center;
   gap: 7px;
+  font-size: 30px;
 }
  #bad-students {
   display: flex;
@@ -52,7 +54,9 @@ body {
   width: 50%;
   text-align:center;
   gap: 7px;
+  font-size: 30px;
 }
+
  
 
 #studentContainer {
@@ -89,6 +93,7 @@ body {
 #filters {
 display: flex;
 justify-content: center;
+font-size: 25px;
 }
 
 #all-btn {
@@ -135,4 +140,8 @@ width: 18%;
   font-size: 30px;
   color: black;
   font-weight: bold;
+ }
+
+ .color-header {
+  height: 40px;
  }
