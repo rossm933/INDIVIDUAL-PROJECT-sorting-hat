@@ -51,12 +51,13 @@ const students = [
   }
   ];
 
-
+  
+  // created a function to render div id's to the html so they they show up on the DOM
  const renderToDom = (divId, htmlToRender) => {
   const selectedDiv = document.querySelector(divId);
   selectedDiv.innerHTML = htmlToRender;
 };
-// This a for loop to pass all the information from the array of students to the cards on the DOM
+// This a for loop to pass all the information from the array of students to the cards on the DOM and assigns a specific color to the  student's house
    const cardsOnDom = (students) => {
    let studentsDomString = "<legend>First Year Students:</legend>";
    students.map(student => {
@@ -84,7 +85,9 @@ const students = [
    })
     renderToDom("#app", studentsDomString);
   };
-
+ 
+ 
+  //This function sorts the cards in alphabetical order
   students.sort(function(a,b) {
     let studentA = a.name.toUpperCase();
     let studentB = b.name.toUpperCase();
@@ -131,14 +134,14 @@ const students = [
    cardsOnDom(students);
  });
 
-
+  //Made an event listener on the begin button for when clicked, the form will appear
   document.getElementById("begin-btn").addEventListener("click", () => {
     document.getElementById("welcome").hidden = true;
     document.getElementById("myForm").hidden = false;
   },
     false,
   );
-
+ // This event lister is on the submit button on the form and to show the rest of the app after clicking sort. Reveals cards and filter buttons
   document.getElementById("submit-button").addEventListener("click", () => {
   //document.getElementById("myForm").hidden = true;
   document.getElementById("filters").hidden = false;
@@ -185,9 +188,11 @@ app.addEventListener("click", (e) => {
   }
     false;
 })
-
+//Empty array to hold the expelled students
 const expelledStudents = [];
 
+
+// pushed students to the expelled array
 expelledStudents.push( {
   id: 9,
   name: "Lord Voldemort",
@@ -200,7 +205,7 @@ expelledStudents.push( {
   imageUrl:"https://i.pinimg.com/736x/ad/b5/2f/adb52f27ded173bae8b7bf7cd2e7476d.jpg"
 });
 
-
+//Once a student is expelled, it goes to the expelled students array with the details of the card below
 const renderExpelledCardsOnDom = (expelledStudents) => {
   let domString = "<legend>Voldy's Army:</legend>";
   expelledStudents.map(expelledStudent => {
@@ -220,7 +225,7 @@ const renderExpelledCardsOnDom = (expelledStudents) => {
 renderExpelledCardsOnDom(expelledStudents);
 
 
-// This function puts the cards on the DOM as soon as the website loads. 
+
 const startApp = () => {
   cardsOnDom(students);
 };
